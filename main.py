@@ -26,14 +26,32 @@ def main(page: ft.Page):
         result_text.update()
 
     # アプリの説明のためのテキストコントロール
-    text1 = ft.Text(value="入力された言葉が回文かどうかを判定します。", size=20)
-    text2 = ft.Text(value="※空白は無視されます。", color=ft.colors.BLACK54, italic=True)
+    text1 = ft.Text(
+        value="入力された言葉が回文かどうかを判定します。",
+        size=20
+    )
+    text2 = ft.Text(
+        value="※空白は無視されます。",
+        color=ft.colors.BLACK54,
+        italic=True
+    )
     # 回文かどうか調べたい言葉を入力するフィールド
-    input_text = ft.TextField(label="ここに言葉を入力", value="", on_change=set_reversed_text)
+    input_text = ft.TextField(
+        label="ここに言葉を入力",
+        value="",
+        on_change=set_reversed_text
+    )
     # 反転した結果を表示するフィールド
-    reversed_text = ft.TextField(label="反転した結果", value="", read_only=True)
+    reversed_text = ft.TextField(
+        label="反転した結果",
+        value="",
+        read_only=True
+    )
     # 判定を実行するボタン
-    judge_button = ft.ElevatedButton(content=ft.Text(value="Judge!", size=18), on_click=judge)
+    judge_button = ft.ElevatedButton(
+        content=ft.Text(value="Judge!", size=18),
+        on_click=judge
+    )
     # 結果を出力するテキストコントロール
     result_text = ft.Text(value="")
 
