@@ -4,9 +4,10 @@ import flet as ft
 def main(page: ft.Page):
     # input_textに入力された内容を、順次反転させてreversed_textに適応する関数
     def set_reversed_text(e):
-        # input_textの内容をスライスにより反転する
-        re_t = input_text.value[::-1]
-        reversed_text.value = re_t
+        # input_textの内容から半角スペースと全角スペースを削除
+        re_t = input_text.value.replace(" ", "").replace("　", "")
+        # スペース削除したものをスライスにより反転する
+        reversed_text.value = re_t[::-1]
         reversed_text.update()
         # リザルトをリセット
         result_text.value = ""
@@ -14,7 +15,10 @@ def main(page: ft.Page):
 
     # 回文判定を行う関数
     def judge(e):
-        if(input_text.value == reversed_text.value):
+        # input_textの内容からもスペースを削除したものを取得
+        in_t = input_text.value.replace(" ", "").replace("　", "")
+        # すべて小文字として比較する。
+        if(in_t.lower() == reversed_text.value.lower()):
             result_text.value = "これは回分です"
         else:
             result_text.value = "これは回分ではありません"
